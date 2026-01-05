@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug JsBasic/test.ts with ts-node",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": [
+                "ts-node"
+            ],
+            "program": "${workspaceFolder}/JsBasic/test.ts",
+            "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}

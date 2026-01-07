@@ -1,4 +1,6 @@
 import { test } from "@playwright/test";
+const registerUrl =
+  "https://material.playwrightvn.com/01-xpath-register-page.html";
 //NAVIGATE
 // test('basic test', async ({page}) => {
 //  await test.step('Step1: access page', async () => {
@@ -113,11 +115,22 @@ import { test } from "@playwright/test";
 // });
 
 //DatePicker
-test.describe("my test suite", async () => {
-  test("basic test", async ({ page }) => {
-    await page.goto(
-      "https://material.playwrightvn.com/01-xpath-register-page.html"
-    );
-    await page.locator("#dob").fill("2026-01-01");
+// test.describe("my test suite", async () => {
+//   test("basic test", async ({ page }) => {
+//     await page.goto(
+//       "https://material.playwrightvn.com/01-xpath-register-page.html"
+//     );
+//     await page.locator("#dob").fill("2026-01-01");
+//   });
+// });
+
+//Continue to learning: Date, Rating and Favcolor
+//DATE, RATING, FAVCOLOR
+test.describe("basic test", async () => {
+  test("test 1", async ({ page }) => {
+    await page.goto(registerUrl);
+    await page.locator("//input[@id='dob']").fill("2026-01-01");
+    await page.locator("//input[@id='rating']").pressSequentially("5");
+    await page.locator("//input[@id='favcolor']").fill("#e66465");
   });
 });

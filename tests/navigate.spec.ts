@@ -126,11 +126,20 @@ const registerUrl =
 
 //Continue to learning: Date, Rating and Favcolor
 //DATE, RATING, FAVCOLOR
+// test.describe("basic test", async () => {
+//   test("test 1", async ({ page }) => {
+//     await page.goto(registerUrl);
+//     await page.locator("//input[@id='dob']").fill("2026-01-01");
+//     await page.locator("//input[@id='rating']").pressSequentially("5");
+//     await page.locator("//input[@id='favcolor']").fill("#e66465");
+//   });
+// });
+
+//Continue to learning: SetInputFiles, HOVER
 test.describe("basic test", async () => {
   test("test 1", async ({ page }) => {
     await page.goto(registerUrl);
-    await page.locator("//input[@id='dob']").fill("2026-01-01");
-    await page.locator("//input[@id='rating']").pressSequentially("5");
-    await page.locator("//input[@id='favcolor']").fill("#e66465");
+    await page.locator("#profile").setInputFiles("a.txt");
+    await page.locator("//div[@class='tooltip']").hover;
   });
 });

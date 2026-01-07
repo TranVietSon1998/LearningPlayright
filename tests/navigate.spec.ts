@@ -1,6 +1,8 @@
 import { test } from "@playwright/test";
 const registerUrl =
   "https://material.playwrightvn.com/01-xpath-register-page.html";
+
+const toDoListUrl = "https://material.playwrightvn.com/03-xpath-todo-list.html";
 //NAVIGATE
 // test('basic test', async ({page}) => {
 //  await test.step('Step1: access page', async () => {
@@ -136,10 +138,25 @@ const registerUrl =
 // });
 
 //Continue to learning: SetInputFiles, HOVER
+// test.describe("basic test", async () => {
+//   test("test 1", async ({ page }) => {
+//     await page.goto(registerUrl);
+//     await page.locator("#profile").setInputFiles("a.txt");
+//     await page.locator("//div[@class='tooltip']").hover;
+//   });
+// });
+
+//Handle Confirm Dialog ( Su dung su kien Dialog cua Playwright nha, luu y la` phai accept truoc dialog truoc khi click button moi dc nha)
 test.describe("basic test", async () => {
   test("test 1", async ({ page }) => {
-    await page.goto(registerUrl);
-    await page.locator("#profile").setInputFiles("a.txt");
-    await page.locator("//div[@class='tooltip']").hover;
+    await page.goto(toDoListUrl);
+    await page
+      .locator("#new-task")
+      .pressSequentially("New task", { delay: 100 }); //input text
+    await page.locator("#add-task").click(); // click Add task button
+    page.on("dialog", (dialog) => dialog.accept());
+    await page.locator("#new-task-delete").click(); // click Delete task button
+
+    await page.getByRole("button").click();
   });
 });
